@@ -7,7 +7,8 @@ metadata:
 spec:
   interval: 10m0s
   dependsOn:
-    - name: infra-configs
+    - name: infrastructure-configs
+    - name: infrastructure-certificates
   sourceRef:
     kind: GitRepository
     name: flux-system
