@@ -223,12 +223,12 @@ In **clusters/production/infrastructure.yaml** we replace the Let's Encrypt serv
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-configs
+  name: infrastructure-configs
   namespace: flux-system
 spec:
   # ...omitted for brevity
   dependsOn:
-    - name: infra-controllers
+    - name: infrastructure-controllers
   patches:
     - patch: |
         - op: replace
@@ -267,7 +267,7 @@ metadata:
 spec:
   interval: 10m0s
   dependsOn:
-    - name: infra-configs
+    - name: infrastructure-configs
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -349,11 +349,11 @@ Watch the production reconciliation:
 ```console
 $ flux get kustomizations --watch
 
-NAME             	REVISION     	SUSPENDED	READY	MESSAGE                         
-apps             	main/696182e	False    	True 	Applied revision: main/696182e	
-flux-system      	main/696182e	False    	True 	Applied revision: main/696182e	
-infra-configs    	main/696182e	False    	True 	Applied revision: main/696182e	
-infra-controllers	main/696182e	False    	True 	Applied revision: main/696182e	
+NAME             	          REVISION     	SUSPENDED	READY	MESSAGE                         
+apps                        main/696182e	False    	True 	Applied revision: main/696182e	
+flux-system      	          main/696182e	False    	True 	Applied revision: main/696182e	
+infrastructure-configs    	main/696182e	False    	True 	Applied revision: main/696182e	
+infrastructure-controllers	main/696182e	False    	True 	Applied revision: main/696182e	
 ```
 
 ### Access the Flux UI
