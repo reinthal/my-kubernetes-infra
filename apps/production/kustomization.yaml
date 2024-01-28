@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ../base/traefik-dashboard
   - ../base/rancher-ingress
+  - ../base/weave-ingress
