@@ -16,6 +16,6 @@ spec:
             namespace: default
       services:
         - name: weave-gitops
-          port: 443
+          port: 9001
   tls:
     secretName: local-reinthal-cc-tls
