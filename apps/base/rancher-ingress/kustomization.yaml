@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: cattle-system
 resources:
   - ingress.yaml
+  - middlewares.yaml
