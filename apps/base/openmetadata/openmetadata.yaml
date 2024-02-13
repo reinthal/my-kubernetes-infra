@@ -23,7 +23,6 @@ spec:
         namespace: openmetadata
       interval: 1m
   values:
-    replicaCount: 3
     airflow:
       airflow:
         extraVolumeMounts:
