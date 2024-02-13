@@ -1,0 +1,59 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: openmetadata
+  labels:
+    toolkit.fluxcd.io/tenant: kog-team
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: openmetadata-dependencies
+  namespace: openmetadata
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart:  openmetadata-dependencies
+      version: '1.3.0'
+      sourceRef:
+        kind: HelmRepository
+        name: openmetadata
+        namespace: openmetadata
+      interval: 1m
+  values:
+    replicaCount: 3
+    airflow:
+      airflow:
+        extraVolumeMounts:
+          - mountPath: /airflow-logs
+            name: airflow-logs
+          - mountPath: /airflow-dags/dags
+            name: airflow-dags
+        extraVolumes:
+          - name: airflow-logs
+            persistentVolumeClaim:
+              claimName: openmetadata-dependencies-logs
+          - name: airflow-dags
+            persistentVolumeClaim:
+              claimName: openmetadata-dependencies-dags
+        config:
+          AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS: "/airflow-dags/dags"
+      dags:
+        path: /airflow-dags/dags
+        persistence:
+          enabled: false
+      logs:
+        path: /airflow-logs
+        persistence:
+          enabled: false
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: openmetadata
+  namespace: openmetadata
+spec:
+  interval: 24h
+  url: https://helm.open-metadata.org/

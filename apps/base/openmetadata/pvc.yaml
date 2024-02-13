@@ -1,0 +1,32 @@
+---
+# logs_pvc.yml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: openmetadata
+  name: openmetadata-dependencies-logs
+  labels:
+    app: airflow
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 10Gi
+---
+# dags_pvc.yml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: openmetadata
+  name: openmetadata-dependencies-dags
+  labels:
+    app: airflow
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 1Gi
