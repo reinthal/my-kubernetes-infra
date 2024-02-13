@@ -15,8 +15,8 @@ spec:
         -   name: default-headers
             namespace: openmetadata
       services:
-        - name: weave-gitops
-          port: TODO
+        - name: openmetadata-dependencies-web
+          port: 8080
   tls:
     secretName: local-reinthal-cc-tls
 ---
