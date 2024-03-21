@@ -80,6 +80,6 @@ spec:
       annotations: {}
       labels: {}
       spec:
-        loadBalancerIP: 10.22.22.80 # this should be an IP in the MetalLB range
+        loadBalancerIP: 10.22.20.80 # this should be an IP in the MetalLB range
       loadBalancerSourceRanges: []
       externalIPs: []
