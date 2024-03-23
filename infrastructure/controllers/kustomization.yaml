@@ -7,3 +7,4 @@ resources:
   - reflector.yaml
   - rancher.yaml
   - longhorn.yaml
+  - kubeseal.yaml
