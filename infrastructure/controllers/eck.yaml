@@ -24,7 +24,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: elastic-operator
+      chart: eck-operator
       version: '2.11.1'
       sourceRef:
         kind: HelmRepository
