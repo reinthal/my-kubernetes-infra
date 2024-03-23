@@ -4,4 +4,4 @@ resources:
   - ../base/traefik-dashboard
   - ../base/rancher-ingress
   - ../base/weave-ingress
-  #- ../base/openmetadata
+  - ../base/elastic
