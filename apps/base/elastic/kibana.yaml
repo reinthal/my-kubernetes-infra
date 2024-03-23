@@ -1,0 +1,50 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kibana-frontend
+  namespace: elastic-system
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`kibana.local.reinthal.cc`)
+      kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: elastic-system
+      services:
+        - name: kibana
+          port: 5601
+  tls:
+    secretName: local-reinthal-cc-tls
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: default-headers
+  namespace: elastic-system
+spec:
+  headers:
+    browserXssFilter: true
+    contentTypeNosniff: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 15552000
+    customFrameOptionsValue: SAMEORIGIN
+    customRequestHeaders:
+      X-Forwarded-Proto: https
+---
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: quickstart
+  namespace: elastic-system
+spec:
+  version: 8.12.2
+  count: 1
+  elasticsearchRef:
+    name: quickstart
