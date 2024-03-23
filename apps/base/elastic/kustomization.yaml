@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: elastic-system
 resources:
   - eck.yaml
-  - elastic.yaml
+  #- elastic.yaml
