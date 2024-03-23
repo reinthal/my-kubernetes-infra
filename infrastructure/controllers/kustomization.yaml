@@ -8,3 +8,4 @@ resources:
   - rancher.yaml
   - longhorn.yaml
   - kubeseal.yaml
+  - eck.yaml
