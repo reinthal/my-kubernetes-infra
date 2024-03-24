@@ -10,3 +10,13 @@ spec:
     count: 3
     config:
       node.store.allow_mmap: false
+      node.roles: ["master", "data", "ingest"]
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "2000m"   # 1 CPU core (25% of total)
+        limits:
+          memory: "3.5Gi"  # Slightly less than node's total RAM to leave some room for OS and other processes
+          cpu: "4000m"   # 4 cpu cores
+
+
