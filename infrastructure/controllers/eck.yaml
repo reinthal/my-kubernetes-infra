@@ -31,3 +31,5 @@ spec:
         name: elastic
         namespace: elastic-system
       interval: 1m
+  values:
+    validate-storage-class: false
