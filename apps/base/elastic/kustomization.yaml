@@ -4,3 +4,6 @@ namespace: elastic-system
 resources: 
   - elastic.yaml
   - kibana.yaml
+  - elastic-ingress.yaml
+  - kibana-ingress.yaml
+  - default-headers.yaml
