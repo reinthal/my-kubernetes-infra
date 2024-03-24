@@ -61,6 +61,7 @@ spec:
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+        namespace: elastic-system
       spec:
         accessModes:
         - ReadWriteOnce
