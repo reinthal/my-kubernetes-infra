@@ -5,6 +5,7 @@ resources:
   - elastic.yaml
   - kibana.yaml
   - beats.yaml
+  - agent.yaml
   - elastic-ingress.yaml
   - kibana-ingress.yaml
   - default-headers.yaml
