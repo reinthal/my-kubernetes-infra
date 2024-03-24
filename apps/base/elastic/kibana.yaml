@@ -9,11 +9,11 @@ spec:
   count: 1
   elasticsearchRef:
     name: "elasticsearch"
-    podTemplate:
-      spec:
-        containers:
-        - name: kibana
-          resources:
-            limits:
-              memory: 1Gi
-              cpu: 1
+  podTemplate:
+    spec:
+      containers:
+      - name: kibana
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: 1
