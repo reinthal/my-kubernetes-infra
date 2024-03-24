@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: elastic-system
 resources: 
   - elastic.yaml
+  - kibana.yaml
