@@ -16,7 +16,7 @@ spec:
         - name: default-headers
           namespace: elastic-system
       services:
-        - name: quickstart-kb-http
+        - name: kibana-kb-http
           port: 5601
   tls:
     secretName: local-reinthal-cc-tls

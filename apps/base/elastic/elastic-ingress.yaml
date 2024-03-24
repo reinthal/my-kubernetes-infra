@@ -16,7 +16,7 @@ spec:
         - name: default-headers
           namespace: elastic-system
       services:
-        - name: quickstart-es-http
+        - name: elasticsearch-es-http
           port: 9200
   tls:
     secretName: local-reinthal-cc-tls
