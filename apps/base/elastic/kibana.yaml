@@ -2,10 +2,17 @@
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
-  name: quickstart
+  name: kibana
   namespace: elastic-system
 spec:
-  version: 8.12.2
+  version: 8.12.1
   count: 1
   elasticsearchRef:
-    name: quickstart
+    name: "elasticsearch"
+    spec:
+      containers:
+      - name: kibana
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: 1
