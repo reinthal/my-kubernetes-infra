@@ -5,7 +5,7 @@ metadata:
   namespace: elastic-system
 spec:
   type: filebeat
-  version: 8.12.1
+  version: 8.12.2
   elasticsearchRef:
     name: elasticsearch
   kibanaRef:
@@ -25,6 +25,12 @@ spec:
     processors:
     - add_cloud_metadata: {}
     - add_host_metadata: {}
+    filebeat.inputs:
+      - type: log
+        paths:
+          - /data/logstash-tutorial.log
+    output.logstash:
+      hosts: ["logstash-ls-beats:5044"]
   daemonSet:
     podTemplate:
       spec:
@@ -33,6 +39,14 @@ spec:
         terminationGracePeriodSeconds: 30
         dnsPolicy: ClusterFirstWithHostNet
         hostNetwork: true # Allows to provide richer host metadata
+        initContainers:
+          - name: download-tutorial
+            image: curlimages/curl
+            command: ["/bin/sh"]
+            args: ["-c", "curl -L https://download.elastic.co/demos/logstash/gettingstarted/logstash-tutorial.log.gz | gunzip -c > /data/logstash-tutorial.log"]
+            volumeMounts:
+              - name: data
+                mountPath: /data
         containers:
         - name: filebeat
           securityContext:
@@ -46,6 +60,10 @@ spec:
             mountPath: /var/log/pods
           - name: varlibdockercontainers
             mountPath: /var/lib/docker/containers
+          - name: data
+            mountPath: /data
+          - name: beat-data
+            mountPath: /usr/share/filebeat/data
           env:
             - name: NODE_NAME
               valueFrom:
@@ -61,12 +79,15 @@ spec:
         - name: varlibdockercontainers
           hostPath:
             path: /var/lib/docker/containers
+        - name: data
+          emptyDir: {}
+        - name: beat-data
+          emptyDir: {}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: filebeat
-  namespace: elastic-system
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources:
@@ -102,7 +123,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: filebeat
-  namespace: elastic-system
 subjects:
 - kind: ServiceAccount
   name: filebeat

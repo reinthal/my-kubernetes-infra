@@ -6,7 +6,7 @@ metadata:
   namespace: elastic-system
 spec:
   version: 8.12.2
-  count: 2
+  count: 1
   elasticsearchRef:
     name: "elasticsearch"
   podTemplate:
@@ -33,7 +33,6 @@ spec:
     xpack.fleet.agentPolicies:
     - name: Fleet Server on ECK policy
       id: eck-fleet-server
-      namespace: elastic-system
       monitoring_enabled:
       - logs
       - metrics
@@ -45,7 +44,6 @@ spec:
           name: fleet_server
     - name: Elastic Agent on ECK policy
       id: eck-agent
-      namespace: elastic-system
       monitoring_enabled:
       - logs
       - metrics

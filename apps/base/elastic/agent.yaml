@@ -49,7 +49,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: fleet-server
-  namespace: elastic-system
 rules:
 - apiGroups: [""]
   resources:
@@ -92,7 +91,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: fleet-server
-  namespace: elastic-system
 subjects:
 - kind: ServiceAccount
   name: fleet-server
@@ -106,7 +104,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: elastic-agent
-  namespace: elastic-system
 rules:
 - apiGroups: [""]
   resources:
@@ -173,7 +170,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: elastic-agent
-  namespace: elastic-system
 subjects:
 - kind: ServiceAccount
   name: elastic-agent
@@ -182,4 +178,3 @@ roleRef:
   kind: ClusterRole
   name: elastic-agent
   apiGroup: rbac.authorization.k8s.io
-...
