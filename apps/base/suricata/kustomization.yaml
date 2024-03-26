@@ -8,5 +8,6 @@ resources:
   - suricata-daemonset.yaml
   - suricata-pv.yaml
   - suricata-pvc.yaml
+  - local-storage.yaml
   #- suricata-stdout.yaml
   
