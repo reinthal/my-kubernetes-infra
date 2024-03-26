@@ -13,14 +13,14 @@ spec:
   - name: default
     config:
       node.roles: ["master", "data", "ingest", "ml"]
-      podTemplate:
-        spec:
-          initContainers:
-          - name: sysctl
-            securityContext:
-              privileged: true
-              runAsUser: 0
-            command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
+      #podTemplate:
+      #  spec:
+      #    initContainers:
+      #    - name: sysctl
+      #      securityContext:
+      #        privileged: true
+      #        runAsUser: 0
+      #      command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
     count: 3
     volumeClaimTemplates:
     - metadata:
