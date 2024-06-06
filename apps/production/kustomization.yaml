@@ -1,8 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../base/traefik-dashboard
-  - ../base/rancher-ingress
-  - ../base/weave-ingress
-  - ../base/elastic
-  #- ../base/suricata
+- ../base/traefik-dashboard
+- ../base/rancher-ingress
+- ../base/weave-ingress
