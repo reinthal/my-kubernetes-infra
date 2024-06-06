@@ -1,0 +1,4 @@
+.env.secrets
+*secret.yaml
+*secrets.yaml
+codeserver-secrets.yaml
