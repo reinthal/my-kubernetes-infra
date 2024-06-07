@@ -3,8 +3,7 @@ kind: Kustomization
 namespace: langfuse
 resources:
 - configmap.yaml
-- secrets-sealed.yaml
+- langfuse-secrets-sealed.yaml
 - deployment.yaml
-- namespace.yaml
 - service.yaml
 
