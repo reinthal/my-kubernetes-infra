@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: langfuse-configmap
+  namespace: langfuse
+data:
+  langfuse-node-env: production
+  langfuse-nextauth-url: https://langfuse.local.reinthal.cc
+  langfuse-telemetry-enabled: "true"
+  langfuse-next-public-sign-up-disabled: "false"
+  langfuse-enable-experimentalfeatures: "false"
