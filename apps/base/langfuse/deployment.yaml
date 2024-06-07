@@ -31,8 +31,8 @@ spec:
                   key: langfuse-node-env
             - name: DATABASE_URL
               valueFrom:
-                configMapKeyRef:
-                  name: langfuse-configmap
+                secretKeyRef:
+                  name: langfuse-secrets
                   key: langfuse-db-url
             - name: NEXTAUTH_URL
               valueFrom:
@@ -41,13 +41,13 @@ spec:
                   key: langfuse-nextauth-url
             - name: NEXTAUTH_SECRET
               valueFrom:
-                configMapKeyRef:
-                  name: langfuse-configmap
+                secretKeyRef:
+                  name: langfuse-secrets
                   key: langfuse-nextauth-secret
             - name: SALT
               valueFrom:
-                configMapKeyRef:
-                  name: langfuse-configmap
+                secretKeyRef:
+                  name: langfuse-secrets
                   key: langfuse-salt
             - name: TELEMETRY_ENABLED
               valueFrom:
