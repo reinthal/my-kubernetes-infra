@@ -6,4 +6,5 @@ resources:
 - weave-gitops.yaml
 - reflector.yaml
 - kubeseal.yaml
+- longhorn.yaml
 
