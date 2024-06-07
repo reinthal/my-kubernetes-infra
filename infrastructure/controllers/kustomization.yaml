@@ -6,5 +6,6 @@ resources:
 - weave-gitops.yaml
 - reflector.yaml
 - kubeseal.yaml
+- rancher.yaml
 - longhorn.yaml
 
