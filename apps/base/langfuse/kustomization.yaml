@@ -5,5 +5,5 @@ resources:
 - configmap.yaml
 - langfuse-secrets-sealed.yaml
 - deployment.yaml
-- service.yaml
+- ingress.yaml
 

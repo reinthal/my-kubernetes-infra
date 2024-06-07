@@ -1,0 +1,19 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: langfuse-frontend
+  namespace: langfuse
+
+spec:
+  entryPoints:
+  - websecure
+
+  routes:
+  - match: Host(`langfuse.local.reinthal.cc`)
+    kind: Rule
+    middlewares: []
+    services:
+    - name: open-webui-service
+      port: 80
+  tls:
+    secretName: local-reinthal-cc-tls
