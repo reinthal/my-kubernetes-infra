@@ -66,3 +66,15 @@ spec:
                   key: langfuse-enable-experimentalfeatures
           ports:
             - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: langfuse-service
+spec:
+  selector:
+    app: langfuse-app
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: ClusterIP

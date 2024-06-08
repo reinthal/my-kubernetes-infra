@@ -13,7 +13,7 @@ spec:
     kind: Rule
     middlewares: []
     services:
-    - name: open-webui-service
+    - name: langfuse-service
       port: 80
   tls:
     secretName: local-reinthal-cc-tls
