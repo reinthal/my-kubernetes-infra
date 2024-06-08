@@ -6,4 +6,5 @@ resources:
 - langfuse-secrets-sealed.yaml
 - deployment.yaml
 - ingress.yaml
+- middlewares.yaml
 
