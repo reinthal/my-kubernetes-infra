@@ -8,4 +8,4 @@ data:
   langfuse-nextauth-url: https://langfuse.local.reinthal.cc
   langfuse-telemetry-enabled: "true"
   langfuse-next-public-sign-up-disabled: "false"
-  langfuse-enable-experimentalfeatures: "false"
+  langfuse-enable-experimentalfeatures: "true"
