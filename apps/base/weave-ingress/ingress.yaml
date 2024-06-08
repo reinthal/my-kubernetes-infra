@@ -13,7 +13,6 @@ spec:
       kind: Rule
       middlewares:
         -   name: default-headers
-            namespace: flux-system
       services:
         - name: weave-gitops
           port: 9001

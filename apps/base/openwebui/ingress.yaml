@@ -11,7 +11,8 @@ spec:
   routes:
   - match: Host(`chat.local.reinthal.cc`)
     kind: Rule
-    middlewares: []
+    middlewares:
+      -   name: default-headers
     services:
     - name: open-webui-service
       port: 8080
