@@ -3,15 +3,16 @@ kind: IngressRoute
 metadata:
   name: langfuse-frontend
   namespace: langfuse
-
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
   - websecure
-
   routes:
   - match: Host(`langfuse.local.reinthal.cc`)
     kind: Rule
-    middlewares: []
+    middlewares:
+      -   name: default-headers
     services:
     - name: langfuse-service
       port: 80
